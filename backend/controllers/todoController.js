@@ -3,7 +3,7 @@ const Todo = require('../models/todoModel');
 // Get all todos
 exports.getTodos = async (req, res) => {
     try {
-        const todos = await Todo.find().sort({ createdAt: -1 });
+        const todos = await Todo.find().sort({ createdAt: -1, });
         res.json(todos);
     } catch (err) {
         res.status(500).json({ message: err.message });

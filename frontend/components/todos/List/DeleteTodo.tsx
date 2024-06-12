@@ -6,8 +6,8 @@ const DeleteTodo = ({ id }: { id: string }) => {
     const router = useRouter();
 
     const handleDelete = async () => {
-        console.log(`${process.env.NEXT_PUBLIC_BACKEND_URL}/todos/${id}`);
         try {
+            const toastId = toast.loading('Loading...');
             let res = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/todos/${id}`,
                 {
@@ -16,7 +16,9 @@ const DeleteTodo = ({ id }: { id: string }) => {
             );
 
             let { message } = await res.json();
-            res.ok ? toast.success(message) : toast.error(message);
+            res.ok
+                ? toast.success(message, { id: toastId })
+                : toast.error(message, { id: toastId });
             router.refresh();
         } catch (error) {
             console.log(error);

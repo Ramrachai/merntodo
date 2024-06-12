@@ -12,6 +12,7 @@ const AddTodoForm = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+        const toastId = toast.loading('Loading...');
 
         if (!title || !description) {
             toast.error('Please fill all fields');
@@ -33,15 +34,14 @@ const AddTodoForm = () => {
 
         let data: Data = await res.json();
         if (data.success) {
-            toast.success(data.message);
+            toast.success(data.message, { id: toastId });
             setTitle('');
             setDescription('');
             router.push('/');
             router.refresh();
         } else {
-            toast.error(data.message);
+            toast.error(data.message, { id: toastId });
         }
-        console.log(data);
     };
 
     return (

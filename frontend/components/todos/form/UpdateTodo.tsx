@@ -11,10 +11,10 @@ const UpdateTodoForm = ({ data }: { data: Todo }) => {
 
     const router = useRouter();
 
-    console.log('got as props', data);
-
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+
+        let toastId = toast.loading('Updating...');
         const todo = {
             title,
             description,
@@ -35,12 +35,14 @@ const UpdateTodoForm = ({ data }: { data: Todo }) => {
 
         let result = await res.json();
         if (result.success) {
-            toast.success(result.message);
+            toast.success(result.message, { id: toastId });
             setTitle('');
             setDescription('');
             setCompleted(false);
             router.push('/');
             router.refresh();
+        } else {
+            toast.error(result.message, { id: toastId });
         }
     };
 
