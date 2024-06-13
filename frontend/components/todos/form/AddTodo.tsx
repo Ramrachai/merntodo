@@ -12,18 +12,18 @@ const AddTodoForm = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        const toastId = toast.loading('Loading...');
 
         if (!title || !description) {
             toast.error('Please fill all fields');
             return false;
         }
 
+        const toastId = toast.loading('Loading...');
+
         const todo = {
             title,
             description,
         };
-        console.log(todo);
         let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/todos`, {
             method: 'POST',
             body: JSON.stringify(todo),
@@ -47,7 +47,7 @@ const AddTodoForm = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="  mt-10 p-4 border rounded-lg shadow-lg bg-white max-w-lg">
+            className="  m-10 p-4 border rounded-md shadow-md bg-white w-full md:max-w-xl">
             <div className="mb-4">
                 <label
                     className="block text-gray-700 text-sm font-bold mb-2"
