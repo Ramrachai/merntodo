@@ -10,6 +10,7 @@ const Navbar = () => {
                     <div className="flex-shrink-0">
                         <Link href="/">
                             <Image
+                                className="w-auto"
                                 src="/logo.png"
                                 alt="logo"
                                 height={50}
@@ -25,6 +26,13 @@ const Navbar = () => {
                                     href="/"
                                     className="text-white hover:text-gray-300">
                                     Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/image"
+                                    className="text-white hover:text-gray-300">
+                                    Image Gallary
                                 </Link>
                             </li>
                             <li>

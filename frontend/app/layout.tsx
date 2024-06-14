@@ -22,11 +22,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <Navbar />
                 {children}
-                <Toaster
-                    position="top-center"
-                    reverseOrder={false}
-                    toastOptions={{ duration: 2000 }}
-                />
+                <Toaster position="top-center" />
             </body>
         </html>
     );
