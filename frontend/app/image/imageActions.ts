@@ -43,7 +43,7 @@ export const uploadImageAction = async (formData: FormData) => {
     }
     if (file.size > maxFileSize) {
         return {
-            message: "File size exceeds the maximum allowed size of 5MB",
+            message: "File size exceeds the maximum allowed size of 6MB",
             success: false
         }
     }

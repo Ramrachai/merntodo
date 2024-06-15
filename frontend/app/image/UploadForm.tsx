@@ -28,7 +28,7 @@ const UploadForm = () => {
             toast.error('Invalid Image type');
             return;
         } else if (file.size > allowedSize) {
-            toast.error('Maximum 4MB allowed');
+            toast.error('Maximum 6MB allowed');
             return;
         }
 
