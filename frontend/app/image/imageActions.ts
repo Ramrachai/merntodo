@@ -3,11 +3,21 @@
 import path from 'path';
 import fs, { writeFile } from "fs/promises"
 import { revalidatePath } from 'next/cache';
+import { ImageType } from '@/lib/definitions';
+import { api_url__image } from '@/lib/api_url';
 
-export async function deleteimage(imageId: string) {
-    let filepath = path.join(process.cwd(), '/public/uploads', imageId)
+export async function deleteimage(image: ImageType) {
+    let filepath = path.join(process.cwd(), '/public/uploads', image.imageName)
+
     try {
         await fs.unlink(filepath)
+        await fetch(api_url__image, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: image._id })
+        })
         revalidatePath("/image")
         return {
             status: 200,
@@ -23,9 +33,11 @@ export async function deleteimage(imageId: string) {
 
 export const uploadImageAction = async (formData: FormData) => {
     const file = formData.get("file") as File;
-    const filename = (Math.random() * 99999).toFixed(0) + "_" + file.name.replaceAll(" ", "_");
-    const maxFileSize = 6 * 1024 * 1024
+    const caption = formData.get("caption") as String
 
+    const imageName = (Math.random() * 99999).toFixed(0) + "_" + file.name.replaceAll(" ", "_");
+
+    const maxFileSize = 6 * 1024 * 1024
     const AllowedTypes = ['image/jpeg', 'image/png', 'image/gif']
 
     if (!AllowedTypes.includes(file.type)) {
@@ -52,9 +64,19 @@ export const uploadImageAction = async (formData: FormData) => {
 
     //upload functionality ==
     const buffer = Buffer.from(await file.arrayBuffer());
-    let filePath = path.join(process.cwd(), "public/uploads/", filename)
+    let filePath = path.join(process.cwd(), "public/uploads/", imageName)
+
     try {
         await writeFile(filePath, buffer)
+        await fetch(api_url__image, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                imageName, caption
+            })
+        })
         revalidatePath("/image")
         return {
             message: "uploaded successfully",

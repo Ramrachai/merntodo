@@ -51,12 +51,21 @@ const UploadForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="mt-5 flex-[2]" ref={formRef}>
+        <form
+            onSubmit={handleSubmit}
+            className="mt-5 flex-[2] flex flex-col gap-4"
+            ref={formRef}>
             <input
                 type="file"
                 name="file"
                 className="border rounded p-4"
                 required
+            />
+            <input
+                type="text"
+                name="caption"
+                placeholder="Caption for image"
+                className="border rounded p-4"
             />
             <UploadButton pending={pending} />
         </form>

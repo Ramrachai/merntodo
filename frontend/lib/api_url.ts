@@ -1,0 +1,1 @@
+export const api_url__image = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/images`;

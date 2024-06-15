@@ -3,8 +3,9 @@ import React from 'react';
 import { FiDelete } from 'react-icons/fi';
 import { deleteimage } from './imageActions';
 import toast from 'react-hot-toast';
+import { ImageType } from '@/lib/definitions';
 
-export default function DeleteButton({ image }: { image: string }) {
+export default function DeleteButton({ image }: { image: ImageType }) {
     const handleClick = async () => {
         let toastId = toast.loading('Deleting...');
         let res = await deleteimage(image);
