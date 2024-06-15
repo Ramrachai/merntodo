@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
-import { FiDelete } from 'react-icons/fi';
 import { deleteimage } from './imageActions';
 import toast from 'react-hot-toast';
 import { ImageType } from '@/lib/definitions';
+import { MdDeleteForever } from 'react-icons/md';
 
 export default function DeleteButton({ image }: { image: ImageType }) {
     const handleClick = async () => {
@@ -20,8 +20,8 @@ export default function DeleteButton({ image }: { image: ImageType }) {
         <button
             title="Delete"
             onClick={handleClick}
-            className="cursor-pointer p-1  text-red-500 hover:scale-125 transition-all">
-            <FiDelete />
+            className="cursor-pointer text-red-500 hover:scale-125 transition-all">
+            <MdDeleteForever size={18} />
         </button>
     );
 }

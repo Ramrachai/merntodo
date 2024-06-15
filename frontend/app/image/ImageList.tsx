@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { FaMagnifyingGlass } from 'react-icons/fa6';
 import DeleteButton from './DeleteButton';
 import Link from 'next/link';
 import DownloadButton from './DownloadButton';
 import { ImageType } from '@/lib/definitions';
 import { api_url__image } from '@/lib/api_url';
+import { MdOutlineImageSearch } from 'react-icons/md';
 
 type Images = {
     images: ImageType[];
@@ -41,8 +41,8 @@ const ImageList = async () => {
                                 title="view image"
                                 target="_blank"
                                 href={image.url}
-                                className="cursor-pointer text-gray-200 hover:scale-125 transition-all">
-                                <FaMagnifyingGlass />
+                                className="cursor-pointer p-1 text-gray-200 hover:scale-125 transition-all">
+                                <MdOutlineImageSearch />
                             </Link>
                             <DeleteButton image={image} />
                         </div>

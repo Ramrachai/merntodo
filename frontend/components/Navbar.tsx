@@ -25,7 +25,7 @@ const Navbar = () => {
                                 <Link
                                     href="/"
                                     className="text-white hover:text-gray-300">
-                                    Home
+                                    Todo
                                 </Link>
                             </li>
                             <li>
@@ -33,13 +33,6 @@ const Navbar = () => {
                                     href="/image"
                                     className="text-white hover:text-gray-300">
                                     Image Gallary
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/addtodo"
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                    Add New Todo
                                 </Link>
                             </li>
                         </ul>
