@@ -3,20 +3,14 @@ import toast from 'react-hot-toast';
 import { signUpAction } from './authActions';
 import { useFormState } from 'react-dom';
 
-type InitialFormType = {
-    name: string;
-    email: string;
-    password: string;
+const initialState = {
+    name: '',
+    email: '',
+    password: '',
 };
 
 const SignUpForm = () => {
-    const initialState: InitialFormType = {
-        name: '',
-        email: '',
-        password: '',
-    };
-
-    const [state, action, isLoading] = useFormState(signUpAction, initialState);
+    const [state, action] = useFormState(signUpAction, initialState);
 
     console.log('log of state', state);
 
@@ -31,6 +25,7 @@ const SignUpForm = () => {
                     Name
                 </label>
                 <input
+                    name="name"
                     type="text"
                     id="name"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -43,6 +38,7 @@ const SignUpForm = () => {
                     Email
                 </label>
                 <input
+                    name="email"
                     type="email"
                     id="email"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -56,6 +52,7 @@ const SignUpForm = () => {
                     Password
                 </label>
                 <input
+                    name="password"
                     type="password"
                     id="password"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -65,7 +62,7 @@ const SignUpForm = () => {
                 <button
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    {isLoading ? 'Loading...' : 'Submit'}
+                    Submit
                 </button>
             </div>
         </form>

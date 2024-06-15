@@ -4,9 +4,11 @@ import { revalidatePath } from "next/cache";
 import path from 'path'
 
 
-export const signUpAction = async (prevState, formData) => {
+export const signUpAction = async (prevState: any, formData: FormData) => {
     console.log("sign action working")
     return {
-        message: "working"
+        name: '',
+        email: '',
+        password: '',
     }
 }
