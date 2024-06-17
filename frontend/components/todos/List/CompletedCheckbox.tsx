@@ -9,7 +9,7 @@ const CompletedCheckbox = ({ item }: { item: Todo }) => {
     const router = useRouter();
 
     const handleComplete = async () => {
-        setChecked(!checked);
+        let newCheckedStatus = !checked;
         const toastId = toast.loading('loading...');
         let res = await fetch(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/todos/${item._id}`,
@@ -19,15 +19,18 @@ const CompletedCheckbox = ({ item }: { item: Todo }) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    completed: !checked,
+                    completed: newCheckedStatus,
                 }),
             }
         );
 
         let result = await res.json();
-        res.ok
-            ? toast.success(result.message, { id: toastId })
-            : toast.error(result.message, { id: toastId });
+        if (res.ok) {
+            setChecked(newCheckedStatus);
+            toast.success(result.message, { id: toastId });
+        } else {
+            toast.error(result.message, { id: toastId });
+        }
         router.refresh();
     };
     return (

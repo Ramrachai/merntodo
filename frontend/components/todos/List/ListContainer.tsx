@@ -23,7 +23,8 @@ const ListContainer = async () => {
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
             <span className="text-sm text-gray-500">
-                Total to : <b>{Number(data.totalTime).toFixed(4)}</b>
+                Time to get todos from database :{' '}
+                <b>{Number(data.totalTime).toFixed(4)}</b>
                 milliseconds
             </span>
             <ul className="space-y-4">

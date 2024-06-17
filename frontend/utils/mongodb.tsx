@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
-const uri = process.env.MONGO_URI as string;
+const uri = process.env.NEXT_PUBLIC_MONGO_URI as string;
 
 if (!uri) {
-    throw new Error('Please define MONGO_URI variable inside .env.local file');
+    throw new Error(
+        'Please define NEXT_PUBLIC_MONGO_URI variable inside .env.local file'
+    );
 }
 
 let isConnected = false;
@@ -14,9 +16,7 @@ const connectToDB = async () => {
     }
 
     try {
-        await mongoose.connect(uri, {
-            dbName: 'nexttest',
-        });
+        await mongoose.connect(uri);
         isConnected = true;
         console.log('connected to mongodb');
     } catch (error) {
