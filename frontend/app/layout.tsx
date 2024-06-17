@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
 import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'MENN boilerplate',
-    description:
-        'Hello world boilerplate for Mongodb, express, Next.js project',
+    title: 'MENN Todo',
+    description: 'Todo - Mongodb, express, Next.js project',
 };
 
 export default function RootLayout({
@@ -20,7 +18,6 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Navbar />
                 {children}
                 <Toaster position="top-center" />
             </body>
