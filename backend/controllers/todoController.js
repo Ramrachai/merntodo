@@ -4,7 +4,7 @@ const Todo = require('../models/todoModel');
 exports.getTodos = async (req, res) => {
     try {
         let t1 = performance.now()
-        const todos = await Todo.find().select("title description createdAt").sort({ createdAt: -1, });
+        const todos = await Todo.find().sort({ createdAt: -1, });
         let t2 = performance.now()
         let totalTime = t2 - t1
         res.json({ todos, totalTime });
