@@ -1,6 +1,7 @@
 import React from 'react';
 import { format } from 'date-fns';
 import ListItem from './ListItem';
+import { api_url__todo } from '@/lib/api_url';
 
 export type Todo = {
     _id: string;
@@ -15,7 +16,10 @@ type Todos = {
 };
 
 const ListContainer = async () => {
-    let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/todos`, {
+    console.log('=============');
+    console.log(api_url__todo);
+    console.log('=============');
+    let res = await fetch(api_url__todo, {
         cache: 'no-cache',
     });
     let data: Todos = await res.json();

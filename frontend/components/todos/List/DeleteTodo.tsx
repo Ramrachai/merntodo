@@ -1,4 +1,5 @@
 'use client';
+import { api_url__todo } from '@/lib/api_url';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -8,12 +9,9 @@ const DeleteTodo = ({ id }: { id: string }) => {
     const handleDelete = async () => {
         try {
             const toastId = toast.loading('Loading...');
-            let res = await fetch(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/todos/${id}`,
-                {
-                    method: 'DELETE',
-                }
-            );
+            let res = await fetch(`${api_url__todo}/${id}`, {
+                method: 'DELETE',
+            });
 
             let { message } = await res.json();
             res.ok

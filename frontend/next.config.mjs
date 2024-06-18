@@ -11,7 +11,7 @@ const nextConfig = {
                 port: '5000',
             },
             {
-                hostname: 'ramrachai.com',
+                hostname: 'todoapi.ramrachai.com',
             }
         ],
     },

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Todo } from './ListContainer';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { api_url__todo } from '@/lib/api_url';
 
 const CompletedCheckbox = ({ item }: { item: Todo }) => {
     const [checked, setChecked] = useState(item.completed);
@@ -11,18 +12,15 @@ const CompletedCheckbox = ({ item }: { item: Todo }) => {
     const handleComplete = async () => {
         let newCheckedStatus = !checked;
         const toastId = toast.loading('loading...');
-        let res = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/todos/${item._id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    completed: newCheckedStatus,
-                }),
-            }
-        );
+        let res = await fetch(`${api_url__todo}/${item._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                completed: newCheckedStatus,
+            }),
+        });
 
         let result = await res.json();
         if (res.ok) {

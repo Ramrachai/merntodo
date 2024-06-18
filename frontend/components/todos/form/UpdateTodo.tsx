@@ -3,6 +3,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { Todo } from '../List/ListContainer';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { api_url__todo } from '@/lib/api_url';
 
 const UpdateTodoForm = ({ data }: { data: Todo }) => {
     const [title, setTitle] = useState(data.title);
@@ -22,16 +23,13 @@ const UpdateTodoForm = ({ data }: { data: Todo }) => {
         };
 
         // Here you can add the code to send this data to your backend/database
-        let res = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/todos/${data._id}`,
-            {
-                method: 'PUT',
-                body: JSON.stringify(todo),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        let res = await fetch(api_url__todo, {
+            method: 'PUT',
+            body: JSON.stringify(todo),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
         let result = await res.json();
         if (result.success) {

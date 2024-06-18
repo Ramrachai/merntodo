@@ -1,4 +1,5 @@
 'use client';
+import { api_url__todo } from '@/lib/api_url';
 import { useRouter } from 'next/navigation';
 import React, { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -24,7 +25,7 @@ const AddTodoForm = () => {
             title,
             description,
         };
-        let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/todos`, {
+        let res = await fetch(api_url__todo, {
             method: 'POST',
             body: JSON.stringify(todo),
             headers: {
