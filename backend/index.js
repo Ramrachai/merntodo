@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyparser = require("body-parser")
-const todoRoutes = require("./routes/todoRoutes")
+const todoRoutes = require("./routes/todo.routes")
+const imageRoutes = require("./routes/image.routes")
+const path = require('path')
 
 const app = express();
 const cors = require('cors');
@@ -17,6 +18,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
 
 // Mongo DB Connections
 mongoose
@@ -29,9 +32,6 @@ mongoose
     });
 
 
-
-
-app.use("/todos", todoRoutes)
 // Routes
 app.get('/', (req, res) => {
     console.log('home route is working');
@@ -39,7 +39,9 @@ app.get('/', (req, res) => {
         message: 'Home route is working',
     });
 });
-
+app.use("/todos", todoRoutes)
+app.use("/uploads", express.static(path.join(__dirname, 'uploads')))
+app.use('/images', imageRoutes)
 
 
 // Connection
