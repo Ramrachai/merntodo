@@ -26,7 +26,7 @@ const ImageList = async () => {
                         key={index}
                         className="group h-52 w-40 border shadow-lg rounded relative overflow-hidden">
                         <Image
-                            src={image.url}
+                            src={image.path}
                             alt={image.caption}
                             fill={true}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -35,12 +35,15 @@ const ImageList = async () => {
                             className="hover:scale-[1.2] transition-all object-cover"
                         />
                         <div className="absolute bottom-0 left-0 bg-black p-1 w-full flex justify-evenly items-center opacity-0 group-hover:opacity-90 transition-opacity">
-                            <DownloadButton imgUrl={image.url} />
+                            <DownloadButton
+                                imgPath={image.path}
+                                filename={image.filename}
+                            />
 
                             <Link
                                 title="view image"
                                 target="_blank"
-                                href={image.url}
+                                href={image.path}
                                 className="cursor-pointer p-1 text-gray-200 hover:scale-125 transition-all">
                                 <MdOutlineImageSearch />
                             </Link>

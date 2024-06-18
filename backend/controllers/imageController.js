@@ -8,10 +8,13 @@ exports.addImage = async (req, res) => {
         if (!files) {
             return res.status(400).json({ message: "Please upload a file" });
         }
+
+        const baseURL = `${req.protocol}://${req.get('host')}`;
+
         const imageDocs = files.map((file) => ({
             originalname: file.originalname,
             filename: file.filename,
-            path: file.path,
+            path: `${baseURL}/${file.path}`,
             size: file.size,
             caption
         }));
@@ -59,9 +62,9 @@ exports.deleteImage = async (req, res) => {
         if (!deletedImage) {
             return res.status(404).json({ message: "Image not found", success: false })
         }
-        return res.json({ id, deletedImage, message: "Image deleted successfully" })
+        return res.json({ message: "Image deleted successfully", sucees: true, deletedImage })
     } catch (error) {
         console.log(error.message)
-        return res.status(500).json({ message: "Image deleting failed" })
+        return res.status(500).json({ message: "Image deleting failed", success: false })
     }
 }

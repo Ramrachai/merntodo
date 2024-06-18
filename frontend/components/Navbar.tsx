@@ -24,14 +24,14 @@ const Navbar = () => {
                             <li>
                                 <Link
                                     href="/"
-                                    className="text-white hover:text-gray-300">
+                                    className="text-white hover:text-gray-800 transition-all border px-2 py-1 rounded hover:bg-gray-50">
                                     Todo
                                 </Link>
                             </li>
                             <li>
                                 <Link
                                     href="/image"
-                                    className="text-white hover:text-gray-300">
+                                    className="text-white hover:text-gray-800 transition-all border px-2 py-1 rounded hover:bg-gray-50">
                                     Image Gallary
                                 </Link>
                             </li>

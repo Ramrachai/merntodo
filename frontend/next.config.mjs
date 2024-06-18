@@ -6,6 +6,13 @@ const nextConfig = {
                 hostname: 'localhost',
                 port: '3000',
             },
+            {
+                hostname: 'localhost',
+                port: '5000',
+            },
+            {
+                hostname: 'ramrachai.com',
+            }
         ],
     },
 };
