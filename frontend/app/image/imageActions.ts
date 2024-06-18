@@ -1,14 +1,13 @@
 'use server'
 import { revalidatePath } from 'next/cache';
 import { ImageType } from '@/lib/definitions';
-import { api_url__image } from '@/lib/api_url';
+import { api_url__image } from '@/config/api_url';
 
 export async function deleteimage(image: ImageType) {
     let url = `${api_url__image}/${image._id}`
-    console.log(url)
 
     try {
-        let res = await fetch(api_url__image + "/" + image._id, {
+        let res = await fetch(url, {
             method: "DELETE"
         })
         await res.json()

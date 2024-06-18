@@ -10,12 +10,19 @@ require('dotenv').config();
 
 
 // Middleware Connections
+
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://todo-ram-mern.vercel.app',
+    '*',
+    // Add more origins as needed
+];
+
 const corsOptions = {
-    origin: '*', // Allow all origins
+    origin: allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-    credentials: true,
 };
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))

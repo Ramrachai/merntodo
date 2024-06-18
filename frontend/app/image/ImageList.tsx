@@ -3,7 +3,7 @@ import DeleteButton from './DeleteButton';
 import Link from 'next/link';
 import DownloadButton from './DownloadButton';
 import { ImageType } from '@/lib/definitions';
-import { api_url__image } from '@/lib/api_url';
+import { api_url__image } from '@/config/api_url';
 import { MdOutlineImageSearch } from 'react-icons/md';
 
 type Images = {

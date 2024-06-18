@@ -1,5 +1,5 @@
 'use client';
-import { api_url__todo } from '@/lib/api_url';
+import { api_url__todo } from '@/config/api_url';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 

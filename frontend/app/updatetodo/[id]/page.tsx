@@ -1,5 +1,5 @@
 import UpdateTodoForm from '@/components/todos/form/UpdateTodo';
-import { api_url__todo } from '@/lib/api_url';
+import { api_url__todo } from '@/config/api_url';
 import React from 'react';
 
 const page = async ({ params }: { params: { id: string } }) => {

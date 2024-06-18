@@ -1,7 +1,7 @@
 import React from 'react';
 import { format } from 'date-fns';
 import ListItem from './ListItem';
-import { api_url__todo } from '@/lib/api_url';
+import { api_url__todo } from '@/config/api_url';
 
 export type Todo = {
     _id: string;
@@ -16,9 +16,6 @@ type Todos = {
 };
 
 const ListContainer = async () => {
-    console.log('=============');
-    console.log(api_url__todo);
-    console.log('=============');
     let res = await fetch(api_url__todo, {
         cache: 'no-cache',
     });

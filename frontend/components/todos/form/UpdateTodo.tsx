@@ -3,7 +3,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { Todo } from '../List/ListContainer';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import { api_url__todo } from '@/lib/api_url';
+import { api_url__todo } from '@/config/api_url';
 
 const UpdateTodoForm = ({ data }: { data: Todo }) => {
     const [title, setTitle] = useState(data.title);

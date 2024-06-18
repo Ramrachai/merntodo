@@ -28,7 +28,6 @@ exports.addImage = async (req, res) => {
     }
 };
 
-
 exports.getAllImages = async (req, res) => {
     try {
         let images = await Image.find()
@@ -48,7 +47,7 @@ exports.getOneImage = async (req, res) => {
         if (!image) {
             return res.status(404).json({ message: "Image not found", success: false })
         }
-        return res.status(200).json({ message: "Image fetched successfully", success: true })
+        return res.status(200).json({ image })
     } catch (error) {
         console.log(error.message)
         return res.status(500).json({ message: "Error while fetching image with id: " + id })
